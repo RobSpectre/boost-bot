@@ -1,0 +1,30 @@
+display_information:
+  name: Boost Bot
+  description: Tracks X boosts and shows the crew leaderboard
+features:
+  bot_user:
+    display_name: Boost Bot
+    always_online: true
+  slash_commands:
+    - command: /stats
+      description: Show the boost leaderboard
+      usage_hint: "[link @your_x_handle]"
+      should_escape: false
+oauth_config:
+  scopes:
+    bot:
+      - channels:history
+      - groups:history
+      - chat:write
+      - commands
+      - users:read
+settings:
+  event_subscriptions:
+    bot_events:
+      - message.channels
+      - message.groups
+  interactivity:
+    is_enabled: false
+  org_deploy_enabled: false
+  socket_mode_enabled: true
+  token_rotation_enabled: false

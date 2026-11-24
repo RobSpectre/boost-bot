@@ -1,11 +1,11 @@
-# Boost Bot
+# Dr. Boostenstein (boost-bot)
 
 Slack bot that keeps score for the X boost crew.
 
 - Someone posts an X link in the channel: that's a **shared link**.
 - Someone replies in the thread with :rocket: that's a **boost**.
-- `/stats` posts the leaderboard, ranked by who boosts the most.
-- `/stats link @handle` ties your Slack user to your X account so replies on X can be credited to you.
+- `/boostboard` posts the leaderboard, ranked by who boosts the most.
+- `/boostboard link @handle` ties your Slack user to your X account so replies on X can be credited to you.
 
 ## Scoring
 
@@ -24,7 +24,7 @@ Weights live in `WEIGHTS` in [core.py](core.py).
 ## How it connects
 
 There are no webhooks and no inbound ports. The bot opens an outbound WebSocket to Slack
-(Socket Mode) for messages and `/stats`, and polls the X API on a timer. Any always-on
+(Socket Mode) for messages and `/boostboard`, and polls the X API on a timer. Any always-on
 machine with outbound HTTPS works; it needs no public URL, TLS certificate or tunnel.
 
 Run exactly one instance. Slack spreads events across open connections, so a second copy
@@ -41,7 +41,7 @@ be generated from the command line.
 | `SLACK_APP_TOKEN` | Same app → **Basic Information → App-Level Tokens** → generate one with the `connections:write` scope (`xapp-...`) |
 | `X_BEARER_TOKEN` | X developer console → your app's bearer token. The plan must allow tweet lookup, recent search and user lookup |
 
-Then in Slack, invite the bot to the boost channel with `/invite @Boost Bot`. To limit
+Then in Slack, invite the bot to the boost channel with `/invite @Dr. Boostenstein`. To limit
 tracking to that channel, copy its Channel ID (channel details → About) into
 `BOOST_CHANNEL_ID`; left blank, every channel the bot is invited to is tracked.
 
@@ -57,7 +57,7 @@ set -a; source .env; set +a
 ```
 
 A healthy start logs `Bolt app is running!`. Post an X link in the channel, reply to it
-with :rocket:, and run `/stats`.
+with :rocket:, and run `/boostboard`.
 
 ### Run it as a service (Linux, systemd)
 

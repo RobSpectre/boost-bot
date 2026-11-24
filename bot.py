@@ -1,4 +1,4 @@
-"""X boost crew Slack bot: tracks shared X links, rocket replies, and /stats."""
+"""X boost crew Slack bot: tracks shared X links, rocket replies, and /boostboard."""
 import logging
 import os
 import re
@@ -31,7 +31,7 @@ def format_leaderboard(rows, name_of):
             f"{r['links']} link{'s' if r['links'] != 1 else ''} shared · "
             f"{r['points']:g} pts"
         )
-    lines.append("_Link your X account with `/stats link @handle` to earn reply points._")
+    lines.append("_Link your X account with `/boostboard link @handle` to earn reply points._")
     return "\n".join(lines)
 
 
@@ -97,7 +97,7 @@ def build_app(store, x, wake, channel=None, **app_kwargs):
             store.add_share(event["channel"], ts, user, tweet_ids)
             wake.set()
 
-    @app.command("/stats")
+    @app.command("/boostboard")
     def stats(ack, respond, command):
         ack()
         text = (command.get("text") or "").strip()
@@ -106,7 +106,7 @@ def build_app(store, x, wake, channel=None, **app_kwargs):
             return
         m = HANDLE.match(text)
         if not m:
-            respond("Usage: `/stats` for the leaderboard, or `/stats link @your_x_handle`.")
+            respond("Usage: `/boostboard` for the leaderboard, or `/boostboard link @your_x_handle`.")
             return
         try:
             found = x.lookup_user(m.group(1))

@@ -1,12 +1,12 @@
 display_information:
-  name: Boost Bot
+  name: Dr. Boostenstein
   description: Tracks X boosts and shows the crew leaderboard
 features:
   bot_user:
-    display_name: Boost Bot
+    display_name: Dr. Boostenstein
     always_online: true
   slash_commands:
-    - command: /stats
+    - command: /boostboard
       description: Show the boost leaderboard
       usage_hint: "[link @your_x_handle]"
       should_escape: false

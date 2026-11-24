@@ -63,7 +63,7 @@ with :rocket:, and run `/stats`.
 
 ```bash
 sudo useradd --system --home /opt/boost-bot --shell /usr/sbin/nologin boostbot
-sudo git clone <this repo's URL> /opt/boost-bot
+sudo git clone git@github.com:RobSpectre/boost-bot.git /opt/boost-bot
 cd /opt/boost-bot
 sudo python3 -m venv .venv && sudo .venv/bin/pip install -r requirements.txt
 sudo cp .env.example .env          # then fill in the tokens

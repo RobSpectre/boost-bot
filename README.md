@@ -63,7 +63,7 @@ with :rocket:, and run `/boostboard`.
 
 ```bash
 sudo useradd --system --home /opt/boost-bot --shell /usr/sbin/nologin boostbot
-sudo git clone git@github.com:RobSpectre/boost-bot.git /opt/boost-bot
+sudo git clone https://github.com/RobSpectre/boost-bot.git /opt/boost-bot
 cd /opt/boost-bot
 sudo python3 -m venv .venv && sudo .venv/bin/pip install -r requirements.txt
 sudo cp .env.example .env          # then fill in the tokens
